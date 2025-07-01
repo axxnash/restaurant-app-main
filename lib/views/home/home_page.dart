@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurant_foodly/common/app_style.dart';
 import 'package:restaurant_foodly/common/background_container.dart';
 import 'package:restaurant_foodly/common/custom_appbar.dart';
-import 'package:restaurant_foodly/common/home_tile.dart';
 import 'package:restaurant_foodly/constants/constants.dart';
 import 'package:restaurant_foodly/views/home/home_tabs.dart';
 import 'package:restaurant_foodly/views/home/widget/home_tiles.dart';

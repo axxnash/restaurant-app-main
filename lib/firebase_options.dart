@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -50,19 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDfXew9nqIglqkdXbmLdtZpPfZTC8XJsQs',
-    appId: '1:192062071611:android:d7696a9ad2e9458d320d1e',
-    messagingSenderId: '192062071611',
-    projectId: 'foodly-app-1234',
-    storageBucket: 'foodly-app-1234.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBnyrYdSfHJ03DeS-mc9SlKHnxC9V3UDvo',
-    appId: '1:192062071611:ios:d0ccef882e2e1ffb320d1e',
-    messagingSenderId: '192062071611',
-    projectId: 'foodly-app-1234',
-    storageBucket: 'foodly-app-1234.firebasestorage.app',
-    iosBundleId: 'com.dbestech.restaurantApp',
+    apiKey: 'AIzaSyAhMPh0b88wYcmYdf_4ZSm9ybcIqnSSCUs',
+    appId: '1:459757618373:android:0d10af1b3d19daa829dcac',
+    messagingSenderId: '459757618373',
+    projectId: 'foodlyapp123',
+    storageBucket: 'foodlyapp123.firebasestorage.app',
   );
 }

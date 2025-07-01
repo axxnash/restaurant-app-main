@@ -7,7 +7,7 @@ import 'package:restaurant_foodly/firebase_options.dart';
 import 'package:restaurant_foodly/views/home/home_page.dart';
 
 Widget defaultHome = HomePage();
-
+//a
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

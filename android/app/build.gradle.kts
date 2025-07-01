@@ -37,3 +37,6 @@ android {
 flutter {
     source = "../.."
 }
+
+// 🔽 Required for Firebase services (like Firestore, Auth, etc.)
+apply<com.google.gms.googleservices.GoogleServicesPlugin>()

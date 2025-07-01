@@ -26,6 +26,7 @@ class _AddFoodsState extends State<AddFoods> {
   final TextEditingController additivePrice = TextEditingController();
   final TextEditingController additiveTitle = TextEditingController();
 
+  @override
   void dispose() {
     title.dispose();
     description.dispose();
@@ -36,6 +37,7 @@ class _AddFoodsState extends State<AddFoods> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Secondary,

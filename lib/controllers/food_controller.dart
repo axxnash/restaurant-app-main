@@ -12,7 +12,7 @@ class FoodController extends GetxController {
   }
 
   // Food Types
-  RxList<String> _types = <String>[].obs;
+  final RxList<String> _types = <String>[].obs;
   RxList<String> get types => _types;
   set setTypes(String newValue) {
     _types.add(newValue);
@@ -26,7 +26,7 @@ class FoodController extends GetxController {
   }
 
   // Additives List
-  RxList<Additive> _additivesList = <Additive>[].obs;
+  final RxList<Additive> _additivesList = <Additive>[].obs;
   RxList<Additive> get additives => _additivesList;
 
   void addAdditive({required String title, required double price}) {

@@ -15,7 +15,7 @@ class UploaderController extends GetxController {
   var logo = Rxn<File>();
   var cover = Rxn<File>();
 
-  RxList<String> _images = <String>[].obs;
+  final RxList<String> _images = <String>[].obs;
 
   List<String> get images => _images;
 
@@ -23,12 +23,12 @@ class UploaderController extends GetxController {
     _images.add(newValue);
   }
 
-  RxString _imageOneUrl = ''.obs;
-  RxString _imageTwoUrl = ''.obs;
-  RxString _imageThreeUrl = ''.obs;
-  RxString _imageFourUrl = ''.obs;
-  RxString _logoUrl = ''.obs;
-  RxString _coverUrl = ''.obs;
+  final RxString _imageOneUrl = ''.obs;
+  final RxString _imageTwoUrl = ''.obs;
+  final RxString _imageThreeUrl = ''.obs;
+  final RxString _imageFourUrl = ''.obs;
+  final RxString _logoUrl = ''.obs;
+  final RxString _coverUrl = ''.obs;
 
   String get imageOneUrl => _imageOneUrl.value;
   String get imageTwoUrl => _imageTwoUrl.value;
