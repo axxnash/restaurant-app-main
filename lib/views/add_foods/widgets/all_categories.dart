@@ -1,16 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:restaurant_foodly/common/app_style.dart';
 import 'package:restaurant_foodly/common/reusable_text.dart';
 import 'package:restaurant_foodly/constants/constants.dart';
 import 'package:restaurant_foodly/constants/uidata.dart';
 import 'package:restaurant_foodly/controllers/food_controller.dart';
+import 'package:get/get.dart';
 
 class ChooseCategory extends HookWidget {
   const ChooseCategory({super.key, required this.next});
   final Function() next;
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(FoodController());
@@ -19,23 +21,23 @@ class ChooseCategory extends HookWidget {
       child: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 12.h, bottom: 12.h),
+            padding: EdgeInsets.only(left: 12.w, top: 12.h, bottom: 12.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
                   text: "Pick Category",
-                  style: appStyle(10, kGray, FontWeight.w600),
+                  style: appStyle(16, kGray, FontWeight.w600),
                 ),
-
                 ReusableText(
                   text:
                       "You are to pick a category to continue adding a food item",
                   style: appStyle(11, kGray, FontWeight.normal),
                 ),
               ],
-            ), // Column
+            ),
           ),
+
           SizedBox(
             height: height * 0.8,
             child: ListView.builder(

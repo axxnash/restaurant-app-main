@@ -1,14 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restaurant_foodly/common/app_style.dart';
 import 'package:restaurant_foodly/common/reusable_text.dart';
-
-import '../constants/constants.dart';
-import 'app_style.dart';
+import 'package:restaurant_foodly/constants/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    this.onTap,
+    required this.onTap,
     this.btnWidth,
     this.btnHeight,
     this.btnColor,
@@ -20,27 +20,26 @@ class CustomButton extends StatelessWidget {
   final double? btnWidth;
   final double? btnHeight;
   final double? btnRadius;
-  final Color? btnColor;
   final String text;
-
+  final Color? btnColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: btnWidth ?? 78.w,
+        width: btnWidth ?? width,
         height: btnHeight ?? 28.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(btnRadius ?? 12.r),
-          color: btnColor ?? kPrimary, // BoxDecoration
+          color: btnColor ?? kPrimary,
         ),
         child: Center(
           child: ReusableText(
             text: text,
-            style: appStyle(12, LightWhite, FontWeight.w500),
+            style: appStyle(12, kLightWhite, FontWeight.w500),
           ),
         ),
-      ), // Container
-    ); // GestureDetector
+      ),
+    );
   }
 }

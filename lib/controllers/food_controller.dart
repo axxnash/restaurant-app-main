@@ -1,40 +1,42 @@
 import 'dart:math';
+import 'package:restaurant_foodly/models/additives_model.dart';
 import 'package:get/get.dart';
-import '../models/additives_model.dart';
 
 class FoodController extends GetxController {
-  // Category
   String _category = '';
+
   String get category => _category;
+
   set setCategory(String newValue) {
     _category = newValue;
     print(category);
   }
 
-  // Food Types
-  final RxList<String> _types = <String>[].obs;
+  RxList<String> _types = <String>[].obs;
+
   RxList<String> get types => _types;
+
   set setTypes(String newValue) {
     _types.add(newValue);
   }
 
-  // ID Generator
   int generateId() {
     int min = 0;
     int max = 10000;
+
+    final _random = Random();
     return min + Random().nextInt(max - min);
   }
 
-  // Additives List
-  final RxList<Additive> _additivesList = <Additive>[].obs;
-  RxList<Additive> get additives => _additivesList;
+  RxList<Additive> _additiveList = <Additive>[].obs;
 
-  void addAdditive({required String title, required double price}) {
-    final newAdditive = Additive(id: generateId(), title: title, price: price);
-    _additivesList.add(newAdditive);
+  RxList<Additive> get additiveList => _additiveList;
+
+  set addAdditive(Additive newValue) {
+    _additiveList.add(newValue);
   }
 
   void clearAdditives() {
-    _additivesList.clear();
+    _additiveList.clear();
   }
 }

@@ -1,13 +1,12 @@
 import 'dart:io';
-
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploaderController extends GetxController {
   final ImagePicker _picker = ImagePicker();
-
   var imageOne = Rxn<File>();
   var imageTwo = Rxn<File>();
   var imageThree = Rxn<File>();
@@ -15,7 +14,7 @@ class UploaderController extends GetxController {
   var logo = Rxn<File>();
   var cover = Rxn<File>();
 
-  final RxList<String> _images = <String>[].obs;
+  RxList<String> _images = <String>[].obs;
 
   List<String> get images => _images;
 
@@ -23,12 +22,12 @@ class UploaderController extends GetxController {
     _images.add(newValue);
   }
 
-  final RxString _imageOneUrl = ''.obs;
-  final RxString _imageTwoUrl = ''.obs;
-  final RxString _imageThreeUrl = ''.obs;
-  final RxString _imageFourUrl = ''.obs;
-  final RxString _logoUrl = ''.obs;
-  final RxString _coverUrl = ''.obs;
+  RxString _imageOneUrl = ''.obs;
+  RxString _imageTwoUrl = ''.obs;
+  RxString _imageThreeUrl = ''.obs;
+  RxString _imageFourUrl = ''.obs;
+  RxString _logoUrl = ''.obs;
+  RxString _coverUrl = ''.obs;
 
   String get imageOneUrl => _imageOneUrl.value;
   String get imageTwoUrl => _imageTwoUrl.value;
@@ -36,8 +35,10 @@ class UploaderController extends GetxController {
   String get imageFourUrl => _imageFourUrl.value;
   String get logoUrl => _logoUrl.value;
   String get coverUrl => _coverUrl.value;
+
   set setLogoUrl(String newValue) {
     _logoUrl.value = newValue;
+    images.add(newValue);
   }
 
   set setCoverUrl(String newValue) {
@@ -114,6 +115,7 @@ class UploaderController extends GetxController {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${imageTwo.value!.path.split('/').last}';
+
         TaskSnapshot snapshot = await FirebaseStorage.instance
             .ref()
             .child(filename)
@@ -127,12 +129,13 @@ class UploaderController extends GetxController {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${imageThree.value!.path.split('/').last}';
+
         TaskSnapshot snapshot = await FirebaseStorage.instance
             .ref()
             .child(filename)
             .putFile(imageThree.value!);
 
-        setImageTwoUrl = await snapshot.ref.getDownloadURL();
+        setImageThreeUrl = await snapshot.ref.getDownloadURL();
       } catch (e) {
         debugPrint(e.toString());
       }
@@ -140,12 +143,13 @@ class UploaderController extends GetxController {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${imageFour.value!.path.split('/').last}';
+
         TaskSnapshot snapshot = await FirebaseStorage.instance
             .ref()
             .child(filename)
             .putFile(imageFour.value!);
 
-        setImageTwoUrl = await snapshot.ref.getDownloadURL();
+        setImageFourUrl = await snapshot.ref.getDownloadURL();
       } catch (e) {
         debugPrint(e.toString());
       }
@@ -153,6 +157,7 @@ class UploaderController extends GetxController {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${logo.value!.path.split('/').last}';
+
         TaskSnapshot snapshot = await FirebaseStorage.instance
             .ref()
             .child(filename)
@@ -166,6 +171,7 @@ class UploaderController extends GetxController {
       try {
         String filename =
             'images/${DateTime.now().millisecondsSinceEpoch}_${cover.value!.path.split('/').last}';
+
         TaskSnapshot snapshot = await FirebaseStorage.instance
             .ref()
             .child(filename)

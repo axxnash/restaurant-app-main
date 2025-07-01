@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:restaurant_foodly/common/app_style.dart';
+import 'package:restaurant_foodly/common/custom_button.dart';
+import 'package:restaurant_foodly/common/reusable_text.dart';
+import 'package:restaurant_foodly/constants/constants.dart';
+import 'package:restaurant_foodly/constants/uidata.dart';
+import 'package:restaurant_foodly/controllers/food_controller.dart';
 import 'package:get/get.dart';
-import '../../../common/app_style.dart';
+import 'package:restaurant_foodly/controllers/uploader_controller.dart';
 
-import '../../../common/custom_button.dart';
-import '../../../common/reusable_text.dart';
-import '../../../constants/constants.dart';
-import '../../../controllers/uploader_controller.dart';
+class ImageUpload extends StatelessWidget {
+  const ImageUpload({super.key, required this.back, required this.next});
 
-class ImageUploads extends StatelessWidget {
-  const ImageUploads({super.key, required this.back, required this.next});
   final Function back;
   final Function next;
 
@@ -22,23 +23,23 @@ class ImageUploads extends StatelessWidget {
       child: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16.w, top: 12.h, bottom: 12.h),
+            padding: EdgeInsets.only(left: 12.w, top: 12.h, bottom: 12.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ReusableText(
                   text: "Upload Images",
-                  style: appStyle(10, kGray, FontWeight.w600),
+                  style: appStyle(16, kGray, FontWeight.w600),
                 ),
-
                 ReusableText(
                   text:
                       "You are required to upload at least 2 images to proceed",
                   style: appStyle(11, kGray, FontWeight.normal),
                 ),
               ],
-            ), // Column
+            ),
           ),
+
           SizedBox(
             height: height * 0.8,
             child: Padding(
@@ -48,10 +49,10 @@ class ImageUploads extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      //image one
+                      // imageOne
                       GestureDetector(
                         onTap: () {
-                          controller.pickImage("one");
+                          controller.pickImage('one');
                         },
                         child: Obx(
                           () => Container(
@@ -60,19 +61,19 @@ class ImageUploads extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
                               border: Border.all(color: kGrayLight),
-                            ), // BoxDecoration
+                            ),
                             child:
                                 controller.imageOneUrl == ''
                                     ? Center(
                                       child: ReusableText(
-                                        text: 'Upload Image',
+                                        text: "Upload Image",
                                         style: appStyle(
                                           16,
                                           kDark,
                                           FontWeight.w600,
                                         ),
                                       ),
-                                    ) // Center
+                                    )
                                     : ClipRRect(
                                       borderRadius: BorderRadius.circular(10.r),
                                       child: Image.network(
@@ -84,10 +85,10 @@ class ImageUploads extends StatelessWidget {
                         ),
                       ),
 
-                      //image two
+                      // imageTwo
                       GestureDetector(
                         onTap: () {
-                          controller.pickImage("two");
+                          controller.pickImage('two');
                         },
                         child: Obx(
                           () => Container(
@@ -96,12 +97,12 @@ class ImageUploads extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
                               border: Border.all(color: kGrayLight),
-                            ), // BoxDecoration
+                            ),
                             child:
                                 controller.imageTwoUrl == ''
                                     ? Center(
                                       child: ReusableText(
-                                        text: 'Upload Image',
+                                        text: "Upload Image",
                                         style: appStyle(
                                           16,
                                           kDark,
@@ -121,13 +122,16 @@ class ImageUploads extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   SizedBox(height: 20.h),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      // image Three
                       GestureDetector(
                         onTap: () {
-                          controller.pickImage("three");
+                          controller.pickImage('three');
                         },
                         child: Obx(
                           () => Container(
@@ -141,7 +145,7 @@ class ImageUploads extends StatelessWidget {
                                 controller.imageThreeUrl == ''
                                     ? Center(
                                       child: ReusableText(
-                                        text: 'Upload Image',
+                                        text: "Upload Image",
                                         style: appStyle(
                                           16,
                                           kDark,
@@ -159,10 +163,10 @@ class ImageUploads extends StatelessWidget {
                           ),
                         ),
                       ),
-
+                      //image Four
                       GestureDetector(
                         onTap: () {
-                          controller.pickImage("four");
+                          controller.pickImage('four');
                         },
                         child: Obx(
                           () => Container(
@@ -176,7 +180,7 @@ class ImageUploads extends StatelessWidget {
                                 controller.imageFourUrl == ''
                                     ? Center(
                                       child: ReusableText(
-                                        text: 'Upload Image',
+                                        text: "Upload Image",
                                         style: appStyle(
                                           16,
                                           kDark,
@@ -199,37 +203,37 @@ class ImageUploads extends StatelessWidget {
 
                   SizedBox(height: 25.h),
 
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomButton(
-                          text: "Back",
-                          btnWidth: width / 2.3,
-                          btnRadius: 9,
-                          onTap: () {
-                            back();
-                          },
-                        ),
-                        CustomButton(
-                          text: "Next",
-                          btnWidth: width / 2.3,
-                          btnRadius: 9,
-                          onTap: () {
-                            // if (controller.images.length > 1) {
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomButton(
+                        onTap: () {
+                          back();
+                        },
+                        btnWidth: width / 2.3,
+                        btnRadius: 9,
+                        text: "Back",
+                      ),
+
+                      CustomButton(
+                        onTap: () {
+                          if (controller.images.length < 2) {
                             next();
-                            // } else {
-                            // Get.snackbar(
-                            //   colorText: kLightWhite,
-                            //   backgroundColor: kPrimary,
-                            //  snackPosition: SnackPosition.TOP,
-                            //  "Upload required images", "Please upload at least 2 images");
-                            //  }
-                          },
-                        ),
-                      ],
-                    ),
+                          } else {
+                            Get.snackbar(
+                              colorText: kLightWhite,
+                              backgroundColor: kPrimary,
+                              snackPosition: SnackPosition.TOP,
+                              "Upload required images",
+                              "Please upload at least 2 images",
+                            );
+                          }
+                        },
+                        btnWidth: width / 2.3,
+                        btnRadius: 9,
+                        text: "Next",
+                      ),
+                    ],
                   ),
                 ],
               ),

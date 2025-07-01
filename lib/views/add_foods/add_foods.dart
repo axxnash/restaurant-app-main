@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_foodly/common/app_style.dart';
+import 'package:restaurant_foodly/common/background_container.dart';
+import 'package:restaurant_foodly/common/reusable_text.dart';
 import 'package:restaurant_foodly/constants/constants.dart';
 import 'package:restaurant_foodly/views/add_foods/widgets/additives_info.dart';
 import 'package:restaurant_foodly/views/add_foods/widgets/all_categories.dart';
 import 'package:restaurant_foodly/views/add_foods/widgets/food_info.dart';
 import 'package:restaurant_foodly/views/add_foods/widgets/image_uploads.dart';
-
-import '../../common/app_style.dart';
-import '../../common/background_container.dart';
-import '../../common/reusable_text.dart';
 
 class AddFoods extends StatefulWidget {
   const AddFoods({super.key});
@@ -40,9 +39,9 @@ class _AddFoodsState extends State<AddFoods> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Secondary,
+      backgroundColor: kSecondary,
       appBar: AppBar(
-        backgroundColor: Secondary,
+        backgroundColor: kSecondary,
         centerTitle: false,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -50,17 +49,16 @@ class _AddFoodsState extends State<AddFoods> {
           children: [
             ReusableText(
               text: "Welcome to Restaurant Panel",
-              style: appStyle(14, LightWhite, FontWeight.w600),
+              style: appStyle(14, kLightWhite, FontWeight.w600),
             ),
             ReusableText(
-              text: "Fill all the required info",
-              style: appStyle(12, LightWhite, FontWeight.normal),
+              text: "Fill all the required info to add food items",
+              style: appStyle(12, kLightWhite, FontWeight.normal),
             ),
           ],
         ),
       ),
       body: BackGroundContainer(
-        color: Colors.white,
         child: ListView(
           children: [
             SizedBox(
@@ -79,7 +77,7 @@ class _AddFoodsState extends State<AddFoods> {
                       );
                     },
                   ),
-                  ImageUploads(
+                  ImageUpload(
                     back: () {
                       _pageController.previousPage(
                         duration: const Duration(milliseconds: 500),
@@ -93,6 +91,7 @@ class _AddFoodsState extends State<AddFoods> {
                       );
                     },
                   ),
+
                   FoodInfo(
                     back: () {
                       _pageController.previousPage(

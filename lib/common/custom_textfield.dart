@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant_foodly/common/app_style.dart';
 import 'package:restaurant_foodly/constants/constants.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({
+class CustomTextfield extends StatelessWidget {
+  const CustomTextfield({
     super.key,
     required this.hintText,
     required this.prefixIcon,
